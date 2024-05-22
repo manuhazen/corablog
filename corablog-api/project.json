@@ -1,0 +1,24 @@
+{
+  "name": "corablog-api",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "corablog-api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "corablog-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "corablog-api:build:development"
+        },
+        "production": {
+          "buildTarget": "corablog-api:build:production"
+        }
+      }
+    }
+  }
+}
