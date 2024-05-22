@@ -12,7 +12,11 @@ comes with a LSP for Vim users.
 
 ## Start the application
 
-Run `npx nx dev corablog` to start the development server. Happy coding!
+⚠️⚠️⚠️ Run `npx prisma migrate dev --name init` to run the migrations, create your local database and seed the database ⚠️⚠️⚠️
+
+Run `yarn nx run corablog-api:serve --configuration=development` to run the API in development mode, you will find default data there.
+
+Run `npx nx dev corablog -p 3001` to start the frontend development server. Happy coding!
 
 ## Build for production
 
