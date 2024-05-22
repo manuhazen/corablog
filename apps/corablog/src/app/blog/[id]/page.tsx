@@ -1,4 +1,3 @@
-import { Post } from '@prisma/client';
 import { getPostById } from '../../../requests';
 import Image from 'next/image';
 import Link from 'next/link';

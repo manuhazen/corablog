@@ -29,7 +29,7 @@ const BlogListItem = ({ blog }: BlogListItemProps) => {
           <Link href={`/blog/${blog.id}`} className="mt-2 block">
             <p className="text-xl font-semibold text-gray-900">{blog.title}</p>
             <p className="mt-3 text-base text-gray-500">
-              {blog.content.slice(0, 100)}...
+              {blog.content.slice(0, 100)}
             </p>
           </Link>
         </div>
