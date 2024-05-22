@@ -46,7 +46,7 @@ async function main() {
   const postSix = await prisma.post.create({
     data: {
       title: 'Hello World 5',
-      content: 'This is a fifth new post',
+      content: 'This is a sixth new post',
       published: false,
       imageUrl: 'https://images.unsplash.com/photo-1521200052569-1799509456d3',
     },

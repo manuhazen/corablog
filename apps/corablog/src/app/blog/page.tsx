@@ -8,6 +8,7 @@ import LoadingPulse from '../../components/common/LoadingPulse';
 const Page = () => {
   const itemsPerPage = 3;
   const [page, setPage] = useState(1);
+  const [filterPublished, setFilterPublished] = useState(false);
 
   const { data: pageLimit, isLoading: pageLimitIsLoading } =
     useGetPageCount(itemsPerPage);
@@ -21,6 +22,12 @@ const Page = () => {
   if (isLoading || pageLimitIsLoading) {
     return <LoadingPulse />;
   }
+
+  console.log(posts);
+
+  const filteredPosts = filterPublished
+    ? posts?.filter((post) => post.published)
+    : posts;
 
   return (
     <>
@@ -42,8 +49,19 @@ const Page = () => {
               One read at a time
             </p>
           </div>
+          <div className="mx-auto mt-12">
+            <div>
+              <input
+                type="checkbox"
+                id="filterPublished"
+                checked={filterPublished}
+                onChange={() => setFilterPublished(!filterPublished)}
+              />
+              <label htmlFor="filterPublished">Show only published posts</label>
+            </div>
+          </div>
           <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-            {posts?.map((post) => (
+            {filteredPosts?.map((post) => (
               <BlogListItem key={post.id} blog={post} />
             ))}
           </div>
