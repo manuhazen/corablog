@@ -15,16 +15,19 @@ export class BlogService {
   }): Promise<Post[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.post.findMany({
-      skip,
-      take,
+      skip: Number(skip),
+      take: Number(take),
       cursor,
       where,
       orderBy,
     });
   }
 
+  async countPosts(): Promise<number> {
+    return this.prisma.post.count();
+  }
+
   async getPostById(postId: string): Promise<Post | null> {
-    console.log('postId', postId);
     return this.prisma.post.findFirstOrThrow({
       where: {
         id: postId,
