@@ -1,23 +1,16 @@
-import { API_URL } from '../../constants';
-import { Post } from '../../../types/Post';
+import { Post } from '@prisma/client';
 import { getPostById } from '../../../requests';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export async function generateStaticParams() {
-  const request = await fetch(`${API_URL}/blog`);
-
-  const posts = await request.json();
-
-  return posts.map((post: Post) => ({
-    params: {
-      id: post.id,
-    },
-  }));
+async function getPost(id: string) {
+  const post = await getPostById(id);
+  return post;
 }
 
-export const Page = async ({ params }: { params: { id: string } }) => {
-  const post = await getPostById(params.id);
+export const Page = async ({ params: { id } }: { params: { id: string } }) => {
+  const post = await getPost(id);
+
   return (
     <div className="w-full h-full bg-white dark:bg-gray-800">
       <div className="w-full mx-auto py-10 bg-white dark:bg-gray-800">

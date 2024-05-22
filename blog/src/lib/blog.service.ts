@@ -28,7 +28,7 @@ export class BlogService {
   }
 
   async getPostById(postId: string): Promise<Post | null> {
-    return this.prisma.post.findFirstOrThrow({
+    return this.prisma.post.findUniqueOrThrow({
       where: {
         id: postId,
       },
