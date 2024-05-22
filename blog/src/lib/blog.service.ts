@@ -38,4 +38,17 @@ export class BlogService {
   async createPost(data: Prisma.PostCreateInput): Promise<Post> {
     return this.prisma.post.create({ data });
   }
+
+  // update a post
+  async updatePost(
+    postId: string,
+    data: Prisma.PostUpdateInput
+  ): Promise<Post> {
+    return this.prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data,
+    });
+  }
 }

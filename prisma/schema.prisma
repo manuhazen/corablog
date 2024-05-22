@@ -18,5 +18,5 @@ model Post {
   title     String
   content   String
   imageUrl  String?
-  published Boolean? @default(false)
+  published Boolean? @default(true)
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Query, Post, Param } from '@nestjs/common';
+import { Body, Controller, Get, Query, Post, Param, Put } from '@nestjs/common';
 import { BlogService } from './blog.service';
 import { Prisma, Post as BlogPost } from '@prisma/client';
 
@@ -39,5 +39,13 @@ export class BlogController {
   @Post()
   async createPost(@Body() data: Prisma.PostCreateInput): Promise<BlogPost> {
     return this.blogService.createPost(data);
+  }
+
+  @Put('/:postId')
+  async updatePost(
+    @Param('postId') postId: string,
+    @Body() data: Prisma.PostUpdateInput
+  ): Promise<BlogPost> {
+    return this.blogService.updatePost(postId, data);
   }
 }

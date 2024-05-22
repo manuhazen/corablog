@@ -30,3 +30,15 @@ export async function createPost(post: PostInput) {
 
   return response.json();
 }
+
+export async function updatePost(id: string, post: PostInput) {
+  const response = await fetch(`${API_URL}/blog/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(post),
+  });
+
+  return response.json();
+}

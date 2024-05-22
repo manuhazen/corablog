@@ -23,7 +23,7 @@ async function main() {
     data: {
       title: 'Hello World 3',
       content: 'This is a third new post',
-      published: true,
+      published: false,
       imageUrl: 'https://images.unsplash.com/photo-1542565506741-6483f00a150d',
     },
   });
@@ -41,6 +41,14 @@ async function main() {
       content: 'This is a fifth new post',
       published: true,
       imageUrl: 'https://images.unsplash.com/photo-1542565506741-6483f00a150d',
+    },
+  });
+  const postSix = await prisma.post.create({
+    data: {
+      title: 'Hello World 5',
+      content: 'This is a fifth new post',
+      published: false,
+      imageUrl: 'https://images.unsplash.com/photo-1521200052569-1799509456d3',
     },
   });
 }

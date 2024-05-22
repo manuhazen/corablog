@@ -3,18 +3,24 @@ import { useState } from 'react';
 import { useGetAllPosts, useGetPageCount } from '../../hooks';
 import BlogListItem from '../../components/blog/BlogListItem';
 import Link from 'next/link';
+import LoadingPulse from '../../components/common/LoadingPulse';
 
 const Page = () => {
   const itemsPerPage = 3;
   const [page, setPage] = useState(1);
 
-  const { data: pageLimit } = useGetPageCount(itemsPerPage);
+  const { data: pageLimit, isLoading: pageLimitIsLoading } =
+    useGetPageCount(itemsPerPage);
 
-  const { data: posts } = useGetAllPosts(page, itemsPerPage);
+  const { data: posts, isLoading } = useGetAllPosts(page, itemsPerPage);
 
   const prevButtonDisabled = page === 1;
   const nextButtonDisabled = page === Number(pageLimit);
   const disabledClasses = 'cursor-not-allowed opacity-50 hover:bg-blue-500';
+
+  if (isLoading || pageLimitIsLoading) {
+    return <LoadingPulse />;
+  }
 
   return (
     <>
