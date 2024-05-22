@@ -12,6 +12,10 @@ comes with a LSP for Vim users.
 
 ## Start the application
 
+Please, use `yarn` for this project.
+
+Run `yarn` to install al the dependencies
+
 ⚠️⚠️⚠️ Run `npx prisma migrate dev --name init` to run the migrations, create your local database and seed the database ⚠️⚠️⚠️
 
 Run `yarn nx run corablog-api:serve --configuration=development` to run the API in development mode, you will find default data there.
